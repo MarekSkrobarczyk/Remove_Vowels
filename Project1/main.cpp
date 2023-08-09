@@ -11,3 +11,19 @@ int main()
 
 	return 0;
 }
+
+bool isVowel(char toCheck)
+{
+	toCheck = std::tolower(toCheck);
+
+	if (toCheck == 'a' || toCheck == 'e' || toCheck == 'i' || toCheck == 'o' || toCheck == 'u')
+	{
+		return true;
+	}
+
+	else
+	{
+		return false;
+	}
+
+}
