@@ -4,7 +4,7 @@
 #include<vector>
 
 bool isVowel(char toCheck); // Check which string elements are vowels
-std::string removeVowel(std::string); //Removing vowels from a string
+auto removeVowel(std::vector<std::string> newWord); //Removing vowels from a string
 
 int main()
 {
@@ -26,4 +26,12 @@ bool isVowel(char toCheck)
 		return false;
 	}
 
+}
+
+auto removeVowel(std::vector<std::string> newWord)
+{
+	for (std::string a : newWord)
+	{
+		newWord.erase(std::remove_if(newWord.begin(), newWord.begin(), isVowel), newWord.begin());
+	}
 }
