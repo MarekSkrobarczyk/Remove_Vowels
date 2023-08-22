@@ -4,34 +4,55 @@
 #include<vector>
 
 bool isVowel(char toCheck); // Check which string elements are vowels
-auto removeVowel(std::vector<std::string> newWord); //Removing vowels from a string
+std::string removeVowel(const std::string& word); // Removing vowels from a string
+std::vector<std::string> removeVowelsFromVector(const std::vector<std::string>& words); // Removing vowels from a vector of strings
 
 int main()
 {
+    std::vector<std::string> a = { "Ala ma Kota", "Kot ma Ale", "Wszyscy mamy inflacje" };
+    std::cout << a[0] << std::endl << a[1] << std::endl << a[2] << "\n\n\n";
 
-	return 0;
+    std::vector<std::string> b = removeVowelsFromVector(a);
+    std::cout << b[0] << std::endl << b[1] << std::endl << b[2] << "\n\n\n";
+
+    return 0;
 }
 
 bool isVowel(char toCheck)
 {
-	toCheck = std::tolower(toCheck);
+    toCheck = std::tolower(toCheck);
 
-	if (toCheck == 'a' || toCheck == 'e' || toCheck == 'i' || toCheck == 'o' || toCheck == 'u')
-	{
-		return true;
-	}
-
-	else
-	{
-		return false;
-	}
-
+    if (toCheck == 'a' || toCheck == 'e' || toCheck == 'i' || toCheck == 'o' || toCheck == 'u')
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
-auto removeVowel(std::vector<std::string> newWord)
+std::string removeVowel(const std::string& word)
 {
-	for (std::string a : newWord)
-	{
-		newWord.erase(std::remove_if(newWord.begin(), newWord.begin(), isVowel), newWord.begin());
-	}
+    std::string result = "";
+    for (char c : word)
+    {
+        if (!isVowel(c))
+        {
+            result += c;
+        }
+    }
+    return result;
+}
+
+std::vector<std::string> removeVowelsFromVector(const std::vector<std::string>& words)
+{
+    std::vector<std::string> result;
+    for (const std::string& word : words)
+    {
+        result.push_back(removeVowel(word));
+    }
+
+   
+    return result;
 }
